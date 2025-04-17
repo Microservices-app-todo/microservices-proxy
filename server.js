@@ -8,9 +8,9 @@ app.use(cors());
 app.use(express.json());
 
 const serviceConfig = {
-  '/api/auth': 'http://auth-api:8000',
-  '/api/todos': 'http://todos-api:8082',
-  '/zipkin': 'http://zipkin:9411',
+  '/api/auth': 'http://auth-api:80',
+  '/api/todos': 'http://todos-api:80',
+  '/zipkin': 'http://zipkin:80',
 };
 
 app.post('/proxy', async (req, res) => {
