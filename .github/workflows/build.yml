@@ -35,7 +35,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.ACR_NAME }}.azurecr.io/frontend:latest
+        tags: ${{ secrets.ACR_NAME }}.azurecr.io/proxy-api:latest
 
     - name: Log in to Azure
       if: github.event_name == 'push'
@@ -50,6 +50,6 @@ jobs:
         az containerapp update \
           --name ${{ secrets.CONTAINER_APP_NAME }} \
           --resource-group ${{ secrets.RESOURCE_GROUP }} \
-          --image ${{ secrets.ACR_NAME }}.azurecr.io/frontend:latest \
+          --image ${{ secrets.ACR_NAME }}.azurecr.io/proxy-api:latest \
           --set-env-vars GITHUB_RUN_ID=${{ github.run_id }} \
           --revision-suffix rev-${{ github.run_number }}
