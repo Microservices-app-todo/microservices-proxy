@@ -13,6 +13,8 @@ RUN npm install
 # Copia el resto del código de la app
 COPY . .
 
+ENV REDIS_HOST=redis-gatekeeper
+ENV REDIS_PORT=6379
 
 # Expone el puerto (por defecto usamos 3000)
 EXPOSE 8085
