@@ -4,7 +4,14 @@ const axios = require('axios');
 const serviceConfig = require('../config/services');
 
 router.post('/', async (req, res) => {
-  console.log(req);
+  console.log('📥 Incoming Request');
+  console.log('Method:', req.method);
+  console.log('URL:', req.originalUrl);
+  console.log('IP:', req.ip);
+  console.log('Headers:', req.headers);
+  console.log('Body:', req.body);
+  console.log('Query Params:', req.query);
+  console.log('Route Params:', req.params);
   if (Array.isArray(req.body) && req.body.some(item => item.traceId)) {
     const zipkinUrl = `${serviceConfig['/zipkin']}/api/v2/spans`;
 
