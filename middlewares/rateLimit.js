@@ -3,6 +3,8 @@ const redis = new Redis({
   host: process.env.REDIS_HOST,
   port: process.env.REDIS_PORT,
 });
+redis.on('connect', () => console.log('✅ Connected to Redis for rate limiting'));
+redis.on('error', err => console.error('❌ Redis error:', err));
 
 module.exports = async (req, res, next) => {
   const ip = req.ip;
